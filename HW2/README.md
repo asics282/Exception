@@ -66,5 +66,50 @@ def Main():
 Main()
 ```
 
+## Задача3:
+Напишите программу, которая запрашивает у пользователя три числа и выполняет следующие проверки:
+Если первое число больше 100, выбросить исключение NumberOutOfRangeException с сообщением "Первое число вне допустимого диапазона".
+Если второе число меньше 0, выбросить исключение NumberOutOfRangeException с сообщением "Второе число вне допустимого диапазона".
+Если сумма первого и второго чисел меньше 10, выбросить исключение NumberSumException с сообщением "Сумма первого и второго чисел слишком мала".
+Если третье число равно 0, выбросить исключение DivisionByZeroException с сообщением "Деление на ноль недопустимо".
+В противном случае, программа должна выводить сообщение "Проверка пройдена успешно". Необходимо создать 3 класса собвстенных исключений
+
+```python
+class NumberOutOfRangeException(Exception):
+    pass
+
+class NumberSumException(Exception):
+    pass
+
+class DivisionByZeroException(Exception):
+    pass
+
+def check_numbers():
+    try:
+        first_number = int(input("Введите первое число: "))
+        second_number = int(input("Введите второе число: "))
+        third_number = int(input("Введите третье число: "))
+
+        if first_number > 100:
+            raise NumberOutOfRangeException("Первое число вне допустимого диапазона")
+        if second_number < 0:
+            raise NumberOutOfRangeException("Второе число вне допустимого диапазона")
+        if first_number + second_number < 10:
+            raise NumberSumException("Сумма первого и второго чисел слишком мала")
+        if third_number == 0:
+            raise DivisionByZeroException("Деление на ноль недопустимо")
+
+        print("Проверка пройдена успешно")
+    except NumberOutOfRangeException as e:
+        print("Ошибка: " + str(e))
+    except NumberSumException as e:
+        print("Ошибка: " + str(e))
+    except DivisionByZeroException as e:
+        print("Ошибка: " + str(e))
+    except ValueError:
+        print("Ошибка: Некорректный ввод числа")
+check_numbers()
+```
+
 ---
 Подготовил студент Geek Brains - **[Ивлев Павел](https://github.com/asics282)**.
